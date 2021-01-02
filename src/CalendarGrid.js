@@ -18,7 +18,6 @@ class CalendarGrid extends Component
             let monthDayIndex = new Map();
             for (let row of this.props.data)
             {
-                let datetime = row.When;
                 let videoId = row.Video;
                 let [month, day, _yeartime] = row.When.split('/');
                 let key = month + '-' + day;
@@ -69,7 +68,7 @@ class CalendarGrid extends Component
                         yLabels={days}
                         data={videoCounts} 
                         yLabelTextAlign={'center'}
-                        height={Math.min(Math.max(this.state.width / 16, 10), 60)}
+                        height={Math.round(Math.min(Math.max(this.state.width / 16, 10), 60))}
                         cellStyle={(background, value, min, max, data, x, y) =>
                         {
                             let styleObj = {
@@ -100,7 +99,7 @@ class CalendarGrid extends Component
                                 styleObj.fontSize = '13pt';
                             }
 
-                            if (x == month && y == date)
+                            if (x === month && y === date)
                             {
                                 styleObj.outline = 'solid #964B91 2px';
                             }
